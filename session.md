@@ -1,4 +1,5 @@
-# Git's Golden Rules (for Teams) 
+# Git Makes Me Angry Inside
+## Adventure Mapping for Git
 
 Emma Jane Hogbin Westby
 
@@ -8,101 +9,181 @@ www.gitforteams.com
 
 
 ----
-# Who Thinks Git is <br />Weird and Hard?
+# "I've tried to learn this stuff and I just can't."
 
 
-# Git is Easy?
+## How we typically teach people Git has nothing to do with adult education best practices.
 
 
-# Only Gits Raise Their Hand When Asked?
+# Adults learn best when they can be selfish.
 
 
-# Git is Good...
+# That means the classroom must relate to an actual problem.
 
 
-# Git is a great<br />**content tracker** for **text files**.
+# "My tech lead said I need to memorise all the Git commands."
 
 
-## Git is very fast<br/>compared to centralised<br/>version control systems.
+![Bloom's Pyramid](assets/bloom-pyramid.png)
 
 
-# Git is not magic.
+## (obligatory rant on
+# "learning styles"
+## typically goes here)
 
 
-# Git is not a dependency manager.
+# Git
+## The Game of Chance
+
+1. Character development.
+2. Adventure map.
+3. Town planning.
+4. Interior design.
 
 
-# Git does not have access control.
+# Warning:<br>Analogies may be flawed.
 
 
-# Git stores <br />whole file snapshots.
+# Agenda
+
+Four techniques to understanding the context of what's happening in Git.
+
+1. Describe the work your team does.
+2. Map your network of repositories.
+3. Diagram your branching strategy.
+4. Defend what gets stored in the repo.
 
 
-# Git is not optimised for binary files.
+![Bloom's Taxonomy](assets/bloom-taxonomy.png)
 
 
-# Git becomes slower as your history gets very, very large.
-
-Note: This means versioning binary files and having very long histories (10k+ commits) will cause Git to become slow.
-
-
-# (where "very large" means 10,000+ commits)
-
-
-# Git Can Get Ugly...
-
-Note: Git is notorious for its "holy wars". This makes it seem very complicated and hard to learn. This presentation unpacks the rationale behind the most common arguments.
-
-
-# It's not really your fault though.
+----
+# Activity 1:
+# Character Sheet
 
 
 ## Git is weird and hard because <br/>the internals have strong opinions, <br />but the interface does not.
 
 
-----
-# Warning:
-## contains opinions
+# Let's create some arbitrary constraints.
 
 
-----
-# Git's Golden Rules
-
-1. Talk to your teammates.
-2. Separate your ideas.
-3. Be consistent.
-4. Include only what you need.
+# Staring ... YOU!
 
 
-----
-Golden Rule #1
-# Talk to your teammates.
+## Who's on your code team?
+
+Write down a list of the NAMES of all the people on your code team.
+
+- UX researchers
+- developers
+- designers
+- project managers
+- clients
+- ???
 
 
-## Map access, then map commands.
+# Where do you fit in?
+
+Write a list of all the (code-related) tasks you are responsible for.
+
+- Writing code.
+- Reviewing designs.
+- Fixing broken code.
 
 
-### Basic Setup
+## What's your workflow?
+
+Create a linear assembly line that plots the order of tasks
+
+and people who are involved.
+
+
+### A Simple Workflow
+Shared repository with two contributors.
+
 ![Decentralised](assets/02fig02-decentralized.svg.png)
 
 
-### Pull Requests
+### A Restricted Access Workflow
+Contributor does not have commit access to the main repository.
+
 ![pull requests - chains repositories together](assets/02fig06-forking-pull-request.svg.png)
 
 
-## Golden Rule
-# Talk to your teammates.
-Map access, then map commands. Use **branch locking** or **forks** to control access.
+## Character Sheet: Summary
+### Set political constraints for your players.
+
+- Know who the characters are in your game of Git.
+- Write down the actions they are allowed to take in the game.
+- Plot a timeline of actions for each character.
+  (This may turn into a decision tree.)
 
 
 ----
-Golden Rule #2:
-# Separate your ideas.
-
-Note: How do you separate: work in progress and fully tested, approved work?
+# Activity 2:
+# Adventure Map
 
 
-# Document and Use a Single Branching Strategy
+# Repositories Are
+### (sort of)
+# Like Towns
+
+
+## Using your assembly line as a reference, sketch the map of where your towns exist.
+
+
+![pull requests - chains repositories together](assets/02fig06-forking-pull-request.svg.png)
+
+
+![pull requests - chains repositories together](assets/02fig05-forking-chain.svg.png)
+
+
+![server locations](assets/deployment-simple.png)
+
+
+# Who works in each of those towns?
+
+Are you allowed to "push" commits to each of those repositories?
+
+
+# What are the major transit links between these towns?
+
+Is it an automated gatekeeper?
+
+Do I need to manually push/pull my cart between the towns?
+
+
+## Adventure Map: Summary
+### Sketch the __landscape__ you are going to play in.
+
+- Draw a map of all the places where repositories are found.
+- Identify on your map who controls each of these "towns".
+- Identify the major routes between repositories.
+- Illustrations should look like a network diagram. 
+
+
+----
+# Activity 3:
+# Town Planning
+
+
+### Branches are used to link individual commits.
+
+Let's call _branches_ which link _commits_
+
+the _streets_ which provide access to _individual buildings_.
+
+
+# __Popular Conventions__
+## Are you building a farming grid,
+### or 
+## encircling a castle with a ring road?
+
+
+## The __master branch__ is like
+# the high street
+## ... every town repository has one. 
 
 
 ## Popular Branching Conventions
@@ -112,106 +193,64 @@ Note: How do you separate: work in progress and fully tested, approved work?
 - Scheduled Release (GitFlow)
 
 
-## State Branching
+### Environment Branches (GitLab Flow)
 
 ![GitLab Flow](assets/03fig06-env-branches.svg.png)
 
 
-## Branch-Per-Feature
+### Branch-Per-Feature (GitHub Flow)
 
 ![GitHub Flow](assets/03fig04-github-flow.svg.png)
 
 
-## Scheduled Release
+### Scheduled Release (GitFlow)
 
 ![GitFlow](assets/03fig12-gitflow-hotfix.svg.png)
 
 
-## One ball per idea.
+### Within your table, discuss which branching strategy sounds most effective for your characters.
+
+- Environment branches 
+- Branch-per-feature
+- Scheduled release
 
 
-## Commit to Whole Ideas<br/>Prior to Merge
+### Draw the "swim lanes" (ball-and-chain graph) for how one new piece of work would be incorporated into your repository.
 
-````
-$ git rebase --interactive HEAD~n
-````
+(this requires a BIG cognitive jump; I will help you)
 
 
-## Convert Conversations to Conclusions at Merge
+## Town Planning: Summary
+### Use one convention to build your roads.
 
-````
-$ git merge --squash NNNN-pull_request_branch
-````
-
-Note: If the review process has resulted in additional commits, squash these commits into logical conclusions. Make patches from pull requests. With a Web-based interface, we’re now seeing a lot more conversations happen alongside the code, with tiny commits and adjustments along the way. Previously this conversation might have happened in a mailing list, with patches attached. Same conversation, but the patches reflected whole “conclusions” up to that point. There were no micro commits in the repository history. In other words, when we moved to a web-based system with conversations, we essentially switched from conclusion-based commits to conversation artefacts.
-
-
-![rebase animation](assets/rebasing-interactive-squash.svg)
-
-
-![merge or rebase flowchart](assets/rebase-or-merge.png)
-
-
-## Golden Rule
-# Separate your ideas.
-Every commit and each branch should hold a coherent unit of work.
+- The strategy you use to separate work is entirely dependent on the type of work you are doing.
+- Don't pick a convention because it's popular. Pick it because it allows your characters to achieve their goals with less friction.
+- Diagrams should mimic the graphed output of `git log --graph`. 
 
 
 ----
-Golden Rule #3:
-# Be consistent.
+# Activity 4:
+# Interior Design
 
-Note: How do you incorporate upstream work? aka How do you bring branches up to date? How do you combine newly approved work into your project's stable branch?
-
-
-# Document and use a maintenance strategy.
+What do you actually put in a repository?
 
 
-## Why the Fuss?<br/>Because TIMTOWTDI
-
-- `pull` => `fetch` + `merge`
-- `pull --rebase=preserve` => `fetch` + `rebase`
-- `merge --no-ff` => forces a merge commit object (“true merge”)
-- `merge --ff-only` => fast forward (graph looks like rebase)
-- `merge --squash` => compress commits to one; then merge
-- `rebase` => forward-port local commits
-- `cherry-pick` => merge individual commits
-
-Note: Pull request is fetch + merge with no fast forwards. Creates a merge commit. Often completed on a remote system with a one-click button. Forcing you into whatever Work Flow the UI has created for you. No flexibility! Merge request => setup the incoming work as a remote; review it locally; and then merge in the branch (or rebase!) however you would like. More steps to setup, but more control over how the work looks in the history graph.
+## Include only what you need.
 
 
-![keep your graph clean](assets/merge-to-update.png)
+## The Hard Questions
+
+- How do you manage dependencies?
+- Where do you store very large files?
+- How do optimise your build process for very fast deployments?
 
 
-(if you care)
-## Update with Rebase 
+## Outsource your
+## dependency management
 
-````
-$ git pull --rebase=preserve
-````
+Version your build manifest
 
-
-![rebase animation](assets/rebasing-update-branch.svg)
-
-
-![merge or rebase flowchart](assets/rebase-or-merge.png)
-
-
-## Golden Rule
-# Be consistent.
-Keep your history legible<br/>by having the team use a single strategy to update branches.
-
-
-----
-Golden Rule #4
-# Include only what you need.
-
-Note: How do you manage dependencies? Where do you store very large files? How do optimise your build process for very fast deployments?
-
-
-## Outsource your dependency management
-
-Note: Version only your build manifest
+ignore the built files.
 
 
 ## If you must include external work
@@ -224,35 +263,53 @@ Note: Version only your build manifest
 ## Store as much as you need, <br />but not more.
 
 
-# Monolith:
-## one mega repo
+## Monolith: one mega repo
 
-Note: Consider your audience: if you don't need to scale, and it's easier for your team, use a single repository to store all knowledge for a project. If you don't know *exactly* what you're building, stick to one repo for your code. If the language you're working in doesn't have a package manager, consider using one repo for deployments.
+Easier:
 
-
-# Microservices:
-## many ickle repos
-
-Note: Think OOP: For separate functionality, use separate repositories. Pull together related pieces at build time.
+- see the scope of a single repository.
+- track all dependent files from a single location.
+- adjust architecture decisions "on the fly".
+- deploy all related code.
 
 
-# Binary files will grow with each version
+## Microservices: many ickle repos
 
-Note: Deployment binaries vs. project assets.
+Easier:
+
+- ship updates without waiting for other teams.
+- independent systems with machine relationships (fewer points of system-wide failure).
+- faster downloads of only relevant information.
 
 
-## Use off-site storage for very large files
+## Tangent: Git vs. Perforce
 
-Do not version binaries in the repository; reference them from another location.
+Git: we tend to store *only* deployment files.
+
+Perforce: we tend to store *all* project files.
+
+
+# Storing Binary Files
+
+Deployment binaries?
+
+Project assets? 
+
+
+### Tip: Use off-site storage for very large files
+
+Do not version binaries in the repository;
+
+reference them from another location.
 
 - [git-annex](https://git-annex.branchable.com/)
 - [git-bigfiles](http://caca.zoy.org/wiki/git-bigfiles)
-- [GLFS](https://git-lfs.github.com)
+- [GLFS](https://git-lfs.github.com) * new shiny!
 
 Note: Best Practice. http://blogs.atlassian.com/2014/05/handle-big-repositories-git/
 
 
-## Use shallow clones for faster deployments
+### Tip: Use shallow clones for faster deployments
 
 Avoid grabbing all versions of a file for the deployment.
 
@@ -261,59 +318,34 @@ $ git clone --depth [depth] [remote-url]
 ````
 
 ````
-$ git clone [URL] --branch [branch_name] --single-branch [folder]
+$ git clone [URL] --branch [branch_name] \
+  --single-branch [folder]
 ````
 
 
-## Golden Rule
-# Include only what you need.
+## Interior Design: Summary
+### Include only what you need.
 
-Outsource your dependency management. Break your repository into smaller service repositories when it's time. Binary files grow when versioned. Use shallow clones for faster deployments.
+- Consider the people and processes you are optimising for.
+- If necessary, use off-site storage for very large files.
+- There are ways to limit what is downloaded on clone, 
+  so don't be afraid to insist all files be included in the repository.
 
 
 ----
-# The Golden Rules
-
-- Talk to your teammates: access control.
-- Separate your ideas: branching patterns.
-- Be consistent: maintenance strategies.
-- Include only what you need: repository architecture.
-
-
 Best Practices
-## Access Control
+### Understanding How Your Team Uses Git
 
-- Choose and use a strategy that suits your governance model.
-- Basic setup has teammates share a centralised repository.
-- Pull requests are commonly used as an access gate (for specific branches).
-
-
-Best Practices
-## Branching Patterns
-
-Choose and use a strategy that suits your deployment model.
-
-- GitFlow -- Scheduled Deployments
-- GitHub Flow -- Branch-per-Feature
-- GitLab Flow -- Environment/State Branching
-- When submitting work for review: Commit to whole thoughts.
-- When merging work: Convert conversations to conclusions.
+- Set political constraints for your players. (Access control.)
+- Sketch the landscape you are going to play in. (Remote repositories.)
+- Use one convention to build your roads. (Branches.)
+- Include only what you need in each building. (Commits.)
 
 
-Best Practices
-## Maintenance Strategies
+## Git: The Game of Chance
 
-- By default `pull` will `merge`. This is hard to read in a graph.
-- (if it matters): use `pull --rebase=preserve` to update your branches.
+https://github.com/gitforteams/game-of-chance
 
-
-Best Practices
-## Repository Architecture
-
-- Store very large files outside of the repository.
-- Speed up deployments with shallow clones.
-- Start with a single repository while you finalise your architecture.
-- Refactor into stand-alone repositories when you can identify discrete services.
 
 
 ## gitforteams.com
@@ -322,7 +354,7 @@ Emma Jane Hogbin Westby
 
 @emmajanehw
 
-[emmajane.github.io/git-team-setup-overview](http://emmajane.github.io/git-team-setup-overview)
+[emmajane.github.io/git-adventure-mapping](http://emmajane.github.io/git-adventure-mapping)
 
 [![cover_illustration](assets/gitforteams-cover.png)](http://shop.oreilly.com/product/0636920034520.do?cmp=af-prog-books-videos-product_cj_auwidget670_0636920034520_4470479)
 [![cover_illustration](assets/collabwithgit-cover.gif)](http://shop.oreilly.com/product/0636920034872.do?cmp=af-prog-books-videos-product_cj_auwidget671_0636920034872_4470479)
