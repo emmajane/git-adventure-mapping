@@ -28,7 +28,7 @@ Alternate Titles
 
 Online:
 
-- [emmajane.github.io/git-team-setup-overview](http://emmajane.github.io/git-team-setup-overview) is often in sync with this repository
+- [emmajane.github.io/git-adventure-mapping](http://emmajane.github.io/git-adventure-mapping) is often in sync with this repository
 
 Locally:
 
